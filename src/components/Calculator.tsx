@@ -1,49 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Autocomplete, Stack, TextField } from "@mui/material";
-// import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
+import { SOURCE_CURRENCIES_OPTIONS } from "@/app/page";
+import { useCalculatorContext } from "@/context/CalculatorContext";
+import { Stack, Typography } from "@mui/material";
+import CalculatorInput from "./CalculatorInput";
 
-const Calculator = ({ allRates }) => {
-  const onItemChange = (value) => {
-    console.log("   onItemChangex  ", value);
-  };
+const Calculator = () => {
+  const {
+    onPayAmtChanged,
+    onReceiveAmtChanged,
+    receiveAmt,
+    payAmount,
+    receivedRates,
+  }: any = useCalculatorContext() || {};
 
   return (
-    <Stack direction={"column"}>
+    <Stack direction={"column"} rowGap={3} columnGap={2}>
       <Typography variant="h4">Rate calculator</Typography>
-
-      <Stack direction="column">
-        <Typography variant="h4">You Pay:</Typography>
-        <Autocomplete
-          disablePortal
-          // getOptionLabel={(option: any) => {
-          //   return option.label ? option.label.toString() : "";
-          // }}
-          options={allRates}
-          sx={{ width: 300 }}
-          // renderOption={(optionProp: any, option: any, optionState: any) => {
-          //   return (
-          //     <li {...optionProp}>
-          //       <Typography variant="subtitle1">{option.label}</Typography>
-          //     </li>
-          //   );
-          // }}
-          // value={inputValue}
-          onChange={(item, value) => {
-            onItemChange(value);
-          }}
-          isOptionEqualToValue={(option: any, curValue: any) =>
-            option?.value === curValue?.value
-          }
-          renderInput={(params) => {
-            return <TextField {...params} label="Currency" />;
-          }}
-        />
-      </Stack>
-
-      <Typography variant="h4">You Get:</Typography>
-
-      {/* <Button onClick={getRates}>Get Rate</Button> */}
+      <CalculatorInput
+        compHeaderLabel={"You Pay:"}
+        amount={payAmount}
+        onAmtChange={onPayAmtChanged}
+        rateOptions={SOURCE_CURRENCIES_OPTIONS}
+        onCurrencyChange={() => {}}
+      />
+      <CalculatorInput
+        compHeaderLabel={"Recipient Get:"}
+        rateOptions={receivedRates}
+        onAmtChange={onReceiveAmtChanged}
+        amount={receiveAmt}
+        onCurrencyChange={() => {}}
+      />
     </Stack>
   );
 };
