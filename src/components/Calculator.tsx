@@ -11,7 +11,8 @@ const Calculator = () => {
     receiveAmt,
     payAmount,
     receivedRates,
-    setSelectedSourceCurrency,
+    setSelectedFromCurrency,
+    setSelectedToCurrency,
   }: any = useCalculatorContext() || {};
 
   return (
@@ -23,7 +24,7 @@ const Calculator = () => {
         onAmtChange={onPayAmtChanged}
         rateOptions={SOURCE_CURRENCIES_OPTIONS}
         onCurrencyChange={(e) => {
-          setSelectedSourceCurrency(e?.currency);
+          setSelectedFromCurrency(e?.currency);
         }}
       />
       <CalculatorInput
@@ -31,7 +32,9 @@ const Calculator = () => {
         rateOptions={receivedRates}
         onAmtChange={onReceiveAmtChanged}
         amount={receiveAmt}
-        onCurrencyChange={() => {}}
+        onCurrencyChange={(e) => {
+          setSelectedToCurrency(e?.currency);
+        }}
       />
     </Stack>
   );

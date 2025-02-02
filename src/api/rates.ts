@@ -9,8 +9,8 @@ export async function fetchRates(source?) {
   }
 
   // TO-DO: current subscriptions versions not supported hence cannot be used.
-  export async function convertCurrency() {
-    const res = await fetch("https://api.exchangerate.host/convert?from=EUR&to=GBP&amount=100&access_key=e2062d91663a80d02d0319acf81a103c");
+  export async function convertCurrency(payAmt?, payCurrency?, receiveCurrency?) {
+    const res = await fetch(`https://api.exchangerate.host/convert?from=${payCurrency}&to=${receiveCurrency}&amount=${payAmt}&access_key=e2062d91663a80d02d0319acf81a103c`);
     if (!res.ok) throw new Error("Failed to convert rates");
     return res.json();
   }
