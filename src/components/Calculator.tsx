@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SOURCE_CURRENCIES_OPTIONS } from "@/app/page";
 import { useCalculatorContext } from "@/context/CalculatorContext";
