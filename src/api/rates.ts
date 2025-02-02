@@ -1,5 +1,9 @@
-export async function fetchRates() {
-    const res = await fetch("https://api.exchangerate.host/live?access_key=e2062d91663a80d02d0319acf81a103c&format=1");
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function fetchRates(source?) {
+
+  const queryParams = source ? `&source=${source}` : '';
+
+    const res = await fetch(`https://api.exchangerate.host/live?access_key=e2062d91663a80d02d0319acf81a103c&format=1${queryParams}`);
     if (!res.ok) throw new Error("Failed to fetch rates");
     return res.json();
   }

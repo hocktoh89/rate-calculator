@@ -7,10 +7,11 @@ const CalculatorContextProvider = (props) => {
   const [receiveAmt, setReceiveAmt] = useState(0.0);
   const [payAmount, setPayAmount] = useState(0.0);
   const [receivedRates, setReceivedRates] = useState([]);
+  const [selectedSourceCurrency, setSelectedSourceCurrency] = useState("");
 
   const getRates = async () => {
     try {
-      const results = await fetchRates();
+      const results = await fetchRates(selectedSourceCurrency);
       const { success, quotes, source } = results || {};
       if (success) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,7 +35,7 @@ const CalculatorContextProvider = (props) => {
 
   useEffect(() => {
     getRates();
-  }, []);
+  }, [selectedSourceCurrency]);
 
   const onPayAmtChanged = (e) => {
     setPayAmount(e?.target.value);
@@ -50,6 +51,8 @@ const CalculatorContextProvider = (props) => {
     onPayAmtChanged,
     payAmount,
     receivedRates,
+    selectedSourceCurrency,
+    setSelectedSourceCurrency,
   };
 
   return (

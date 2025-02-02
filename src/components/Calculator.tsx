@@ -11,6 +11,7 @@ const Calculator = () => {
     receiveAmt,
     payAmount,
     receivedRates,
+    setSelectedSourceCurrency,
   }: any = useCalculatorContext() || {};
 
   return (
@@ -21,7 +22,9 @@ const Calculator = () => {
         amount={payAmount}
         onAmtChange={onPayAmtChanged}
         rateOptions={SOURCE_CURRENCIES_OPTIONS}
-        onCurrencyChange={() => {}}
+        onCurrencyChange={(e) => {
+          setSelectedSourceCurrency(e?.currency);
+        }}
       />
       <CalculatorInput
         compHeaderLabel={"Recipient Get:"}
