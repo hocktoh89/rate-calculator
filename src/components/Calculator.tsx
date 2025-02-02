@@ -10,9 +10,10 @@ const Calculator = () => {
     onReceiveAmtChanged,
     receiveAmt,
     payAmount,
-    receivedRates,
-    setSelectedFromCurrency,
-    setSelectedToCurrency,
+    receivedCurNRates,
+    onFromCurrencyChanged,
+    onToCurrencyChanged,
+    offeredRate,
   }: any = useCalculatorContext() || {};
 
   return (
@@ -23,18 +24,17 @@ const Calculator = () => {
         amount={payAmount}
         onAmtChange={onPayAmtChanged}
         rateOptions={SOURCE_CURRENCIES_OPTIONS}
-        onCurrencyChange={(e) => {
-          setSelectedFromCurrency(e?.currency);
-        }}
+        onCurrencyChange={onFromCurrencyChanged}
       />
+      <Typography variant="h6">
+        Exchange Rates: <>{offeredRate}</>
+      </Typography>
       <CalculatorInput
         compHeaderLabel={"Recipient Get:"}
-        rateOptions={receivedRates}
+        rateOptions={receivedCurNRates}
         onAmtChange={onReceiveAmtChanged}
         amount={receiveAmt}
-        onCurrencyChange={(e) => {
-          setSelectedToCurrency(e?.currency);
-        }}
+        onCurrencyChange={onToCurrencyChanged}
       />
     </Stack>
   );

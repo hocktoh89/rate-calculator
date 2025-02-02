@@ -1,16 +1,14 @@
 import { convertCurrency, fetchRates } from "@/api/rates";
+import { isEmpty } from "@/lib/String";
 import { createContext, useContext, useEffect, useState } from "react";
 
 export const CalculatorContext = createContext({});
 
-export const isEmpty = (value) => {
-  return value === null || value === undefined || value === "";
-};
-
 const CalculatorContextProvider = (props) => {
   const [receiveAmt, setReceiveAmt] = useState(0.0);
   const [payAmount, setPayAmount] = useState(0.0);
-  const [receivedRates, setReceivedRates] = useState([]);
+  const [offeredRate, setOfferedRate] = useState(0.0);
+  const [receivedCurNRates, setReceivedCurNRates] = useState([]);
   const [selectedFromCurrency, setSelectedFromCurrency] = useState("");
   const [selectedToCurrency, setSelectedToCurrency] = useState("");
 
@@ -31,10 +29,10 @@ const CalculatorContextProvider = (props) => {
           });
         }
 
-        setReceivedRates(quotesArr);
+        setReceivedCurNRates(quotesArr);
       }
     } catch (err) {
-      console.error("Main: ", err);
+      console.error("CalculatorContext - getRates: ", err);
     }
   };
 
@@ -80,16 +78,28 @@ const CalculatorContextProvider = (props) => {
     setReceiveAmt(e?.target?.value);
   };
 
+  const onFromCurrencyChanged = (e) => {
+    setSelectedFromCurrency(e?.currency);
+  };
+
+  const onToCurrencyChanged = (e) => {
+    setSelectedToCurrency(e?.currency);
+    console.log(e);
+    setOfferedRate(e?.rate);
+  };
+
   const contextProps = {
     onReceiveAmtChanged,
     receiveAmt,
     onPayAmtChanged,
     payAmount,
-    receivedRates,
+    receivedCurNRates,
     selectedFromCurrency,
-    setSelectedFromCurrency,
+    onFromCurrencyChanged,
     selectedToCurrency,
     setSelectedToCurrency,
+    onToCurrencyChanged,
+    offeredRate,
   };
 
   return (
