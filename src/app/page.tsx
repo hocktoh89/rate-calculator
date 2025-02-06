@@ -12,6 +12,8 @@ import {
 } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./page.module.css";
+import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { persistQueryClient } from "@tanstack/react-query-persist-client";
 
 export const SOURCE_CURRENCIES_OPTIONS = [
   {
@@ -37,11 +39,25 @@ export const SOURCE_CURRENCIES_OPTIONS = [
 ];
 
 const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
   queryCache: new QueryCache({
     onError: (error) => {
       return toast.error(`Something went wrong: ${error.message}`);
     },
   }),
+});
+
+const persister = createSyncStoragePersister({
+  storage: window.localStorage, // or IndexedDB for larger datasets
+});
+
+persistQueryClient({
+  queryClient,
+  persister,
 });
 
 export default function Home() {

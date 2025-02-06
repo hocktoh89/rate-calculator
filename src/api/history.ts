@@ -33,9 +33,10 @@ export function useRateHistoryCache(date?, date14daysAgo?) {
         date, date14daysAgo
       ),
       throwOnError: true,
+      placeholderData: (prevData) => prevData,
       staleTime: 10 * 60 * 1000, // 10 minutes (keeps data fresh for this duration)
       refetchInterval: 10 * 60 * 1000, // Auto refetch every 10 minutes
-      refetchOnWindowFocus: false, // Refetch when user focuses the tab
+      // refetchOnWindowFocus: false, // Refetch when user focuses the tab
     });
   }
 
