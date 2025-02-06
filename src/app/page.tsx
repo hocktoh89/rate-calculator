@@ -1,17 +1,17 @@
 "use client";
 
 import Calculator from "@/components/Calculator";
+import HistoryList from "@/components/HistoryList";
 import CalculatorContextProvider from "@/context/CalculatorContext";
 import HistoryContextProvider from "@/context/HistoryContext";
 import { Stack } from "@mui/material";
-import styles from "./page.module.css";
-import HistoryList from "@/components/HistoryList";
-import toast, { Toaster } from "react-hot-toast";
 import {
   QueryCache,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import toast, { Toaster } from "react-hot-toast";
+import styles from "./page.module.css";
 
 export const SOURCE_CURRENCIES_OPTIONS = [
   {
@@ -38,7 +38,9 @@ export const SOURCE_CURRENCIES_OPTIONS = [
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
-    onError: (error) => toast.error(`Something went wrong: ${error.message}`),
+    onError: (error) => {
+      return toast.error(`Something went wrong: ${error.message}`);
+    },
   }),
 });
 
