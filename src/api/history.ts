@@ -7,10 +7,11 @@ export async function fetchRateHistory(date?) {
     try {
         const queryParams = date ? `&date=${formatDateWithDash(date)}` : '';  
         const res = await fetch(`${RATE_API_URL}/historical?access_key=${process.env.NEXT_PUBLIC_RATE_API_ACCESS}${queryParams}`);
+        const clonedRes = res.clone();
 
-        if (!res.ok) throw new Error(`Failed to fetch histories on ${date}`);
+        if (!clonedRes.ok) throw new Error(`Failed to fetch histories on ${date}`);
 
-        const {error: errMsgFromSuccessRes} = await res.json();
+        const {error: errMsgFromSuccessRes} = await clonedRes.json();
           if(!isEmpty(errMsgFromSuccessRes)) {
             throw new Error(errMsgFromSuccessRes?.info);
         }
