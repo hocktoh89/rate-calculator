@@ -1,12 +1,12 @@
 import { formatDateWithDash } from "@/lib/Date";
 import { isEmpty } from "@/lib/String";
 import { useQuery } from "@tanstack/react-query";
+import { RATE_API_URL } from ".";
 
 export async function fetchRateHistory(date?) {
     try {
-        const queryParams = date ? `&date=${formatDateWithDash(date)}` : '';
-    
-        const res = await fetch(`https://api.exchangerate.host/historical?access_key=e2062d91663a80d02d0319acf81a103c${queryParams}`);
+        const queryParams = date ? `&date=${formatDateWithDash(date)}` : '';  
+        const res = await fetch(`${RATE_API_URL}/historical?access_key=${process.env.NEXT_PUBLIC_RATE_API_ACCESS}${queryParams}`);
 
         if (!res.ok) throw new Error(`Failed to fetch histories on ${date}`);
 

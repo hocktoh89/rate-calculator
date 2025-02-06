@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "env-cmd -f environments/.env.development next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -15,6 +15,7 @@
     "@mui/x-date-pickers": "^7.25.0",
     "@tanstack/react-query": "^5.66.0",
     "date-fns": "^2.29.3",
+    "env-cmd": "^10.1.0",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
