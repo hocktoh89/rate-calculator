@@ -1,12 +1,12 @@
 // import { fetchRateHistory, useRateHistoryCache } from "@/api/history";
 // import { createContext, useContext, useEffect, useState } from "react";
 import { useRateHistoryCache } from "@/api/history";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const HistoryContext = createContext({});
 
 const HistoryContextProvider = (props) => {
-  // const [historicalRates, setHistoricalRates] = useState([]);
+  const [historicalRates, setHistoricalRates] = useState([]);
 
   // To-Do: hard code 14 days for now
   const [startDate, setStartDate] = useState(null);
@@ -18,40 +18,32 @@ const HistoryContextProvider = (props) => {
     status: cacheStatus,
   } = useRateHistoryCache(endDate);
 
+  const { quotes, success, source } = rateHistoriesCache || {};
+
   console.log("   rate  HIstories Cache", rateHistoriesCache);
   console.log("   rate  HIstories cacheError", cacheError);
   console.log("   rate  HIstories cacheStatus", cacheStatus);
 
-  // const getHistoricalRates = async () => {
-  //   try {
-  //     const results = await fetchRateHistory(endDate);
-  //     const { success, quotes, source } = results || {};
-  //     if (success) {
-  //       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //       const quotesArr: any = [];
+  useEffect(() => {
+    if (quotes && success) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const quotesArr: any = [];
 
-  //       for (const [key, value] of Object.entries(quotes)) {
-  //         const cleanCurrency = key.replace(source, "");
-  //         quotesArr.push({
-  //           label: cleanCurrency,
-  //           currency: cleanCurrency,
-  //           rate: value,
-  //         });
-  //       }
+      for (const [key, value] of Object.entries(quotes)) {
+        const cleanCurrency = key.replace(source, "");
+        quotesArr.push({
+          label: cleanCurrency,
+          currency: cleanCurrency,
+          rate: value,
+        });
+      }
 
-  //       setHistoricalRates(quotesArr);
-  //     }
-  //   } catch (err) {
-  //     console.error("HistoricalContext - getHistoricalRates: ", err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getHistoricalRates();
-  // }, [endDate]);
+      setHistoricalRates(quotesArr);
+    }
+  }, [quotes]);
 
   const contextProps = {
-    // historicalRates,
+    historicalRates,
     startDate,
     setStartDate,
     endDate,
