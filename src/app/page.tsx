@@ -46,21 +46,21 @@ const queryClient = new QueryClient({
 
 export default function Home() {
   return (
-      <QueryClientProvider client={queryClient}>
-        <HistoryContextProvider>
-          <CalculatorContextProvider>
-            <div className={styles.page}>
-              <main className={styles.main}>
-                <Stack direction={{ md: "row", sx: "column" }} gap={3}>
-                  <Calculator />
-                  <HistoryList />
-                  <Toaster />
-                </Stack>
-              </main>
-              <footer className={styles.footer}></footer>
-            </div>
-          </CalculatorContextProvider>
-        </HistoryContextProvider>
-      </QueryClientProvider>{" "}
+    <QueryClientProvider client={queryClient}>
+      <HistoryContextProvider>
+        <CalculatorContextProvider>
+          <div className={styles.page}>
+            <main className={styles.main}>
+              <Stack direction={{ md: "row", sx: "column" }} gap={3}>
+                <Calculator />
+                <HistoryList />
+                <Toaster />
+              </Stack>
+            </main>
+            <footer className={styles.footer}></footer>
+          </div>
+        </CalculatorContextProvider>
+      </HistoryContextProvider>
+    </QueryClientProvider>
   );
 }
