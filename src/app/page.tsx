@@ -6,6 +6,12 @@ import HistoryContextProvider from "@/context/HistoryContext";
 import { Stack } from "@mui/material";
 import styles from "./page.module.css";
 import HistoryList from "@/components/HistoryList";
+import toast, { Toaster } from "react-hot-toast";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 
 export const SOURCE_CURRENCIES_OPTIONS = [
   {
@@ -30,20 +36,29 @@ export const SOURCE_CURRENCIES_OPTIONS = [
   },
 ];
 
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => toast.error(`Something went wrong: ${error.message}`),
+  }),
+});
+
 export default function Home() {
   return (
-    <HistoryContextProvider>
-      <CalculatorContextProvider>
-        <div className={styles.page}>
-          <main className={styles.main}>
-            <Stack direction={{ md: "row", sx: "column" }} gap={3}>
-              <Calculator />
-              <HistoryList />
-            </Stack>
-          </main>
-          <footer className={styles.footer}></footer>
-        </div>
-      </CalculatorContextProvider>
-    </HistoryContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <HistoryContextProvider>
+        <CalculatorContextProvider>
+          <div className={styles.page}>
+            <main className={styles.main}>
+              <Stack direction={{ md: "row", sx: "column" }} gap={3}>
+                <Calculator />
+                <HistoryList />
+                <Toaster />
+              </Stack>
+            </main>
+            <footer className={styles.footer}></footer>
+          </div>
+        </CalculatorContextProvider>
+      </HistoryContextProvider>
+    </QueryClientProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { formatDateWithDash } from "@/lib/Date";
+import { useQuery } from "@tanstack/react-query";
 
 export async function fetchRateHistory(date?) {
     try {
@@ -11,5 +12,18 @@ export async function fetchRateHistory(date?) {
         console.error('fetchRateHistory: ', err);
     }
 }
+
+export function useRateHistoryCache(date?) {
+    return useQuery({
+      queryKey: ["rateHistories", date],
+      queryFn: () => fetchRateHistory(
+        date
+      ),
+      staleTime: 2 * 60 * 1000, // 5 minutes (keeps data fresh for this duration)
+      refetchInterval: 2 * 60 * 1000, // Auto refetch every 5 minutes
+      refetchOnWindowFocus: false, // Refetch when user focuses the tab
+    });
+  }
+
 
 // timeframe?start_date=2015-01-01&end_date=2015-05-01
