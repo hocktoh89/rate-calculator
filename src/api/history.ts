@@ -3,10 +3,13 @@ import { isEmpty } from "@/lib/String";
 import { useQuery } from "@tanstack/react-query";
 import { RATE_API_URL } from ".";
 
-export async function fetchRateHistory(date?) {
+// Hard coded to fetch these currencies only CNY,EUR,SGD,JPY,HKD
+export async function fetchRateHistory(date?, date14daysAgo?) {
     try {
-        const queryParams = date ? `&date=${formatDateWithDash(date)}` : '';  
-        const res = await fetch(`${RATE_API_URL}/historical?access_key=${process.env.NEXT_PUBLIC_RATE_API_ACCESS}${queryParams}`);
+        let queryParams = date ? `&end_date=${formatDateWithDash(date)}` : '';  
+        queryParams += date14daysAgo ? `&start_date=${formatDateWithDash(date14daysAgo)}` : '';  
+
+        const res = await fetch(`${RATE_API_URL}/timeframe?access_key=${process.env.NEXT_PUBLIC_RATE_API_ACCESS}${queryParams}&currencies=CNY,EUR,SGD,JPY,HKD`);
         const clonedRes = res.clone();
 
         if (!clonedRes.ok) throw new Error(`Failed to fetch histories on ${date}`);
@@ -22,11 +25,12 @@ export async function fetchRateHistory(date?) {
     }
 }
 
-export function useRateHistoryCache(date?) {
+
+export function useRateHistoryCache(date?, date14daysAgo?) {
     return useQuery({
-      queryKey: ["rateHistories", date],
+      queryKey: ["rateHistories", date, date14daysAgo],
       queryFn: () => fetchRateHistory(
-        date
+        date, date14daysAgo
       ),
       throwOnError: true,
       staleTime: 10 * 60 * 1000, // 10 minutes (keeps data fresh for this duration)

@@ -10,7 +10,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { Fragment } from "react";
 
 const HistoryList = () => {
-  const { setEndDate, endDate, historicalRates }: any =
+  const { setEndDate, endDate, date14daysAgo, historicalRates }: any =
     useHistoryContext() || {};
   return (
     <>
@@ -21,13 +21,20 @@ const HistoryList = () => {
           </DemoContainer>
         </LocalizationProvider>
         <Typography variant="h6">
-          Rates for Dates: {endDate.toString()}
+          Rates for Dates Between: {date14daysAgo.toString()} -{" "}
+          {endDate.toString()}
         </Typography>
         <List>
           {historicalRates?.map((x, index) => {
             return (
               <Fragment key={index}>
-                {x?.currency} : {x?.rate}, <br />
+                <Stack direction={"column"} gap={0.5}>
+                  <Typography variant="h6">{x?.date}</Typography>
+                  <Typography variant="h6">
+                    {x?.currency} : {x?.rate}
+                  </Typography>
+                </Stack>
+                <br />
               </Fragment>
             );
           })}
