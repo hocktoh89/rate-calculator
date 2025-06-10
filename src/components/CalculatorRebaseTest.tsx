@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SOURCE_CURRENCIES_OPTIONS } from "@/app/page";
 import { useCalculatorContext } from "@/context/CalculatorContext";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
 <<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
@@ -51,6 +51,7 @@ const CalculatorRebaseTest = () => {
         amount={receiveAmt}
         onCurrencyChange={onToCurrencyChanged}
       />
+      <Button>Added Extra Stuff for Testing Purpose</Button>
     </Stack>
   );
 };
