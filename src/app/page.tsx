@@ -1,6 +1,6 @@
 "use client";
 
-import CalculatorRebaseTest from "@/components/CalculatorRebaseTest";
+import CalculatorRebaseTest from "@/components/Calculator";
 import HistoryList from "@/components/HistoryList";
 import CalculatorContextProvider from "@/context/CalculatorContext";
 import HistoryContextProvider from "@/context/HistoryContext";

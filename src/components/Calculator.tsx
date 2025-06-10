@@ -5,21 +5,7 @@ import { useCalculatorContext } from "@/context/CalculatorContext";
 import { Button, Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
->>>>>>> 79cf03a (rebase test commit 1)
-const CalculatorKeepName = () => {
-========
-const CalculatorRebaseTest = () => {
->>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
-<<<<<<< HEAD
-=======
-========
-const CalculatorRebaseTest = () => {
->>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
->>>>>>> 79cf03a (rebase test commit 1)
+const Calculator = () => {
   const {
     onPayAmtChanged,
     onReceiveAmtChanged,
@@ -56,18 +42,4 @@ const CalculatorRebaseTest = () => {
   );
 };
 
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
->>>>>>> 79cf03a (rebase test commit 1)
-export default CalculatorKeepName;
-========
-export default CalculatorRebaseTest;
->>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
-<<<<<<< HEAD
-=======
-========
-export default CalculatorRebaseTest;
->>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
->>>>>>> 79cf03a (rebase test commit 1)
+export default Calculator;
