@@ -37,7 +37,11 @@ const Calculator = () => {
         amount={receiveAmt}
         onCurrencyChange={onToCurrencyChanged}
       />
+<<<<<<< HEAD
       <Button>Added Extra Stuff for Testing Purpose</Button>
+=======
+      <Typography>HGello</Typography>
+>>>>>>> 0bfca01 (rebase parent rename component)
     </Stack>
   );
 };

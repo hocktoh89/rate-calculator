@@ -1,6 +1,10 @@
 "use client";
 
+<<<<<<< HEAD
 import CalculatorRebaseTest from "@/components/Calculator";
+=======
+import Calculator from "@/components/Calculator";
+>>>>>>> 0bfca01 (rebase parent rename component)
 import HistoryList from "@/components/HistoryList";
 import CalculatorContextProvider from "@/context/CalculatorContext";
 import HistoryContextProvider from "@/context/HistoryContext";
@@ -73,7 +77,11 @@ export default function Home() {
           <div className={styles.page}>
             <main className={styles.main}>
               <Stack direction={{ md: "row", sx: "column" }} gap={3}>
+<<<<<<< HEAD
                 <CalculatorRebaseTest />
+=======
+                <Calculator />
+>>>>>>> 0bfca01 (rebase parent rename component)
                 <HistoryList />
                 <Toaster />
               </Stack>
