@@ -5,7 +5,7 @@ import { useCalculatorContext } from "@/context/CalculatorContext";
 import { Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
-const CalculatorKeepName = () => {
+const Calculator = () => {
   const {
     onPayAmtChanged,
     onReceiveAmtChanged,
@@ -37,8 +37,9 @@ const CalculatorKeepName = () => {
         amount={receiveAmt}
         onCurrencyChange={onToCurrencyChanged}
       />
+      <Typography>HGello</Typography>
     </Stack>
   );
 };
 
-export default CalculatorKeepName;
+export default Calculator;
