@@ -5,6 +5,7 @@ const NewFile = () => {
     <>
       New File
       <Typography>YYOYOY</Typography>
+      <Typography>Extra Typo fgra</Typography>
     </>
   );
 };
