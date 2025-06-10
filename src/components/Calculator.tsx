@@ -5,15 +5,7 @@ import { useCalculatorContext } from "@/context/CalculatorContext";
 import { Button, Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-const CalculatorKeepName = () => {
-========
-const CalculatorRebaseTest = () => {
->>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
-========
-const CalculatorRebaseTest = () => {
->>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
+const Calculator = () => {
   const {
     onPayAmtChanged,
     onReceiveAmtChanged,
@@ -46,20 +38,19 @@ const CalculatorRebaseTest = () => {
         onCurrencyChange={onToCurrencyChanged}
       />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Button>Added Extra Stuff for Testing Purpose</Button>
 =======
       <Typography>HGello</Typography>
 >>>>>>> 0bfca01 (rebase parent rename component)
+=======
+      <Typography>HGello</Typography>
+=======
+      <Button>Added Extra Stuff for Testing Purpose</Button>
+>>>>>>> 33a3b31 (rebase test commit 6)
+>>>>>>> 9f73b78 (rebase test commit 6)
     </Stack>
   );
 };
 
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
-export default CalculatorKeepName;
-========
-export default CalculatorRebaseTest;
->>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
-========
-export default CalculatorRebaseTest;
->>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
+export default Calculator;

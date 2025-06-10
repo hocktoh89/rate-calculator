@@ -2,6 +2,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CalculatorRebaseTest from "@/components/Calculator";
 =======
 import Calculator from "@/components/Calculator";
@@ -9,6 +10,9 @@ import Calculator from "@/components/Calculator";
 =======
 import CalculatorRebaseTest from "@/components/CalculatorRebaseTest";
 >>>>>>> 5881ba1 (rebase test commit 1)
+=======
+import CalculatorRebaseTest from "@/components/Calculator";
+>>>>>>> 9f73b78 (rebase test commit 6)
 import HistoryList from "@/components/HistoryList";
 import CalculatorContextProvider from "@/context/CalculatorContext";
 import HistoryContextProvider from "@/context/HistoryContext";
