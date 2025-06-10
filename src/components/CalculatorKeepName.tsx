@@ -5,7 +5,7 @@ import { useCalculatorContext } from "@/context/CalculatorContext";
 import { Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
-const Calculator = () => {
+const CalculatorKeepName = () => {
   const {
     onPayAmtChanged,
     onReceiveAmtChanged,
@@ -41,4 +41,4 @@ const Calculator = () => {
   );
 };
 
-export default Calculator;
+export default CalculatorKeepName;
