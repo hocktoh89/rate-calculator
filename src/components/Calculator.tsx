@@ -6,10 +6,14 @@ import { Button, Stack, Typography } from "@mui/material";
 import CalculatorInput from "./CalculatorInput";
 
 <<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
+<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
 const CalculatorKeepName = () => {
 ========
 const CalculatorRebaseTest = () => {
 >>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
+========
+const CalculatorRebaseTest = () => {
+>>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
   const {
     onPayAmtChanged,
     onReceiveAmtChanged,
@@ -51,7 +55,11 @@ const CalculatorRebaseTest = () => {
 };
 
 <<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
+<<<<<<<< HEAD:src/components/CalculatorKeepName.tsx
 export default CalculatorKeepName;
 ========
 export default CalculatorRebaseTest;
 >>>>>>>> b6daa90 (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
+========
+export default CalculatorRebaseTest;
+>>>>>>>> 79cf03a (rebase test commit 1):src/components/CalculatorRebaseTest.tsx
