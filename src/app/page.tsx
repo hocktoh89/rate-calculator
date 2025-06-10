@@ -1,6 +1,6 @@
 "use client";
 
-import Calculator from "@/components/Calculator";
+import CalculatorTest from "@/components/CalculatorTest";
 import HistoryList from "@/components/HistoryList";
 import CalculatorContextProvider from "@/context/CalculatorContext";
 import HistoryContextProvider from "@/context/HistoryContext";
@@ -68,7 +68,7 @@ export default function Home() {
           <div className={styles.page}>
             <main className={styles.main}>
               <Stack direction={{ md: "row", sx: "column" }} gap={3}>
-                <Calculator />
+                <CalculatorTest />
                 <HistoryList />
                 <Toaster />
               </Stack>
