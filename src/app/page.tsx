@@ -36,6 +36,11 @@ export const SOURCE_CURRENCIES_OPTIONS = [
     currency: "SGD",
     rate: 0.0,
   },
+  {
+    label: "AUD",
+    currency: "AUD",
+    rate: 1.0,
+  },
 ];
 
 const queryClient = new QueryClient({
